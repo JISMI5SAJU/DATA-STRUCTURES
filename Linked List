@@ -1,0 +1,179 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+  {
+    int data;
+    struct node *link;
+  }*temp,*head,*ptr;
+int item;
+void insert_begin();
+void insert_end();
+void insert_anyloc();
+void delete_begin();
+void delete_end();
+void delete_anyloc();
+void display();
+void main()
+  {
+    int choice;
+    while(choice!=8)
+      {
+         printf("\nEnter choice \n1.Insertion at the beginning 2.Insertion at the end 3.Insertion at any location\n4.Deletion at the beginning 5.Deletion at the end 6.Deletion at any position \n7.Display 8.Exit\n");
+         scanf("%d",&choice);
+         switch(choice)
+           {
+             case 1:
+               {
+                 insert_begin();
+                 break;
+               }
+             case 2:
+               {
+                 insert_end();
+                 break;
+               }
+             case 3:
+               {
+                 insert_anyloc();
+                 break;
+               }
+             case 4:
+               {
+                 delete_begin();
+                 break;
+               }
+             case 5:
+               {
+                 delete_end();
+                 break;
+               }
+             case 6:
+               {
+                 delete_anyloc();
+                 break;
+               }
+             case 7:
+               {
+                 display();
+                 break;
+               }
+             default:
+               {
+                 
+                 break;
+               }
+           }
+      }    
+  }          
+void insert_begin()
+  {
+    temp=(struct node*)malloc(sizeof(struct node));
+    if(temp==NULL)
+      {
+        printf("Memory underflow,no insertion\n");
+      }
+    else
+      {
+        printf("Enter the data to be inserted\n");
+        scanf("%d",&item);
+        temp->data=item;
+        temp->link=head;
+        head=temp;
+      }
+  }
+void insert_end()
+  {
+    temp=(struct node*)malloc(sizeof(struct node));
+    ptr=head;
+    while (ptr->link!=NULL)
+      {
+        ptr=ptr->link;
+      }
+    printf("Enter the data to be inserted\n");
+    scanf("%d",&item);
+    ptr->link=temp;
+    temp->data=item;
+    temp->link=NULL;
+  }
+void insert_anyloc()
+  {
+    int key;
+    temp=(struct node*)malloc(sizeof(struct node));
+    printf("Enter the key after which new node is to be placed\n");
+    scanf("%d",&key);
+    ptr=head;
+    while(ptr->data!=key && ptr->link!=NULL)
+      {
+        ptr=ptr->link;
+      }
+    if(ptr->link==NULL)
+      {
+        printf("Search fails\n");
+      }
+    else
+      {
+        temp->link=ptr->link;
+        ptr->link=temp;
+      }
+  }
+void delete_begin()
+  {
+    if (head==NULL)
+      {
+        printf("Underflow\n");
+      }
+    else
+      {
+        ptr=head;
+        head=ptr->link;
+        free(ptr);
+      }
+   }
+void delete_end()
+  {
+    if (head->link==NULL)
+      {
+        ptr=head;
+        head=NULL;
+        free(ptr);
+      }
+    else
+      {
+        ptr=head;
+        temp=head->link;
+        while(temp->link!=NULL)
+          {
+            ptr=temp;
+            temp=temp->link;
+          }
+        ptr->link=NULL;
+        free(temp);
+      }
+  }
+void delete_anyloc()
+  {
+     int pos,i=1;
+     temp=head;
+     printf("Enter the position of the key to be deleted\n");
+     scanf("%d",&pos);
+     while(i<pos-1)
+       {
+         temp=temp->link;
+         i++;
+       }
+     ptr=temp->link;
+     temp->link=ptr->link;
+     free(ptr);
+   }
+void display()
+  {
+    ptr=head;
+    printf("Elements in the linked list are \n");
+    while(ptr->link!=NULL)
+      {
+        item=ptr->data;
+        printf("%d\t",item);
+        ptr=ptr->link;    
+      }
+    printf("\n");
+   }
