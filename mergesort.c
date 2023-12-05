@@ -1,0 +1,75 @@
+#include<stdio.h>
+int f,last,l,mid;
+void mergesort(int a[50],int f,int mid);
+void merge(int a[30],int f,int mid,int l);
+int lim;
+void main()
+{
+int a[50],lim,i;
+printf("Enter the size of array");
+scanf("%d",&lim);
+printf("Enter elemets of array");
+for(i=0;i<lim;i++)
+{
+ scanf("%d",&a[i]);
+}
+printf("The given array is\n");
+ for(i=0;i<lim;i++){
+     printf("%d",a[i]);
+     printf("/n");
+ }
+  mergesort(a,0,lim-1);
+ printf("The sorted array is: \n");
+for(i=0;i<lim;i++){
+     printf("%d",a[i]);
+     printf("/n");
+ }
+}
+void mergesort(int a[50],int f,int l)
+{
+
+if(f<l){
+mid=(f+l)/2;
+mergesort(a,f,mid);
+mergesort(a,mid+1,l);
+merge(a,f,mid,l);
+}
+}
+void merge(int a[],int f,int mid,int l){
+int i,j,k;
+l=lim-1;
+int sorted[l];
+i=f;
+j=mid+1;
+k=f;
+while(i<=mid&&j<=l){
+    if(a[i]<a[j]){
+    sorted[k]=a[i];
+    i++;
+    k++;
+    }
+   else if(a[j]<a[i]){
+   sorted[k]=a[j];
+   j++;
+   k++;
+   }
+   else if(a[i]==a[j]){
+   sorted[k]=a[i];
+   sorted[k+1]=a[j];
+   i++;
+   j++;
+   k=k+2;
+   }
+}
+while(i<=mid)
+{
+sorted[k]=a[i];
+i++;
+k++;
+}
+while(j<=l){
+sorted[k]=a[j];
+j++;
+k++;
+}
+}
