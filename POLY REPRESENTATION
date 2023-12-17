@@ -1,0 +1,36 @@
+#include <stdio.h>
+void main()
+{
+    int n,i;
+    printf("Enter no of elements in poly");
+    scanf("%d",&n);
+    struct poly{
+        int coeff;
+        int exp;
+    }s[10];
+for(i=0;i<n;i++){
+printf("Enter coeff of %dth term\n",i);
+scanf("%d",&s[i].coeff);
+printf("Enter expo of %dth term\n",i);
+scanf("%d",&s[i].exp);
+}
+for(i=0;i<n;i++){
+if(i<n-1){
+    printf("%dX^%d+",s[i].coeff,s[i].exp);
+}
+else{
+    printf("%dX^%d",s[i].coeff,s[i].exp);
+}
+
+}}
+OUTPUT:
+Enter no of elements in poly2
+Enter coeff of 0th term
+5
+Enter expo of 0th term
+4
+Enter coeff of 1th term
+2
+Enter expo of 1th term
+3
+5X^4+2X^3
