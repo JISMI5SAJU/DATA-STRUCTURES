@@ -1,0 +1,50 @@
+#include <stdio.h>
+void main()
+{
+int n,i,x,flag=0,c=0;
+c+=2;
+printf("Enter the limit");
+scanf("%d",&n);
+c++;
+printf("Enter elements of array");
+int a[20];
+for(i=0;i<n;i++){
+    c++;
+    scanf("%d",&a[i]);
+    c++;
+}
+printf("Enter search element");
+scanf("%d",&x);
+c++;
+for(i=0;i<n;i++)
+{
+    if(x==a[i])
+    {
+        flag++;
+        c++;
+        break;
+        
+    }
+}
+if(flag==0)
+{
+    c++;
+    printf("The %d is not found\n",x);
+    c++;
+}
+else
+{   c++;
+    printf("The %d is found\n",x);
+    c++;
+}
+printf("Time complexity=%d\n",c);
+printf("Space complexity=%d\n",20+4*n);
+
+}
+out:
+Enter the limit4
+Enter elements of array1 2 3 4
+Enter search element4
+The 4 is found
+Time complexity=15
+Space complexity=36
