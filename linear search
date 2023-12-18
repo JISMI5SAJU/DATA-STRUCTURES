@@ -1,0 +1,36 @@
+#include <stdio.h>
+void main()
+{
+int n,i,x,flag=0;
+printf("Enter the limit");
+scanf("%d",&n);
+printf("Enter elements of array");
+int a[20];
+for(i=0;i<n;i++){
+    scanf("%d",&a[i]);
+}
+printf("Enter search element");
+scanf("%d",&x);
+for(i=0;i<n;i++)
+{
+    if(x==a[i])
+    {
+        flag++;
+        break;
+    }
+}
+if(flag==0)
+{
+    printf("The %d is not found",x);
+}
+else
+{
+    printf("The %d is found",x);
+}
+
+}
+output:
+Enter the limit6
+Enter elements of array6 7 8 4 3 1
+Enter search element2
+The 2 is not found
