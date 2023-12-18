@@ -1,0 +1,58 @@
+#include <stdio.h>
+void main()
+{
+int n,i,temp,j,left,right,middle,x,flag=0;
+printf("Enter the limit");
+scanf("%d",&n);
+int a[n];
+printf("Enter elements of array");
+for(i=0;i<n;i++){
+    scanf("%d",&a[i]);
+}
+for(i=0;i<n;i++)
+{
+    for(j=i+1;j<n;j++)
+    {
+        if(a[i]>a[j])
+        {
+            temp=a[i];
+            a[i]=a[j];
+            a[j]=temp;
+        }
+    }
+}
+printf("The sorted array is\n");
+for(i=0;i<n;i++)
+{
+    printf("%d\t\n",a[i]);
+}
+printf("Enter search element\n");
+scanf("%d",&x);
+left=0;
+right=n-1;
+while(left<=right)
+{
+    middle=(left+right)/2;
+if(x<a[middle])
+{
+    right=middle-1;
+}
+else if(x>a[middle])
+{
+    left=middle+1;
+}
+out:
+Enter the limit5
+Enter elements of array6 7 4 9 3
+The sorted array is
+3	
+4	
+6	
+7	
+9	
+Enter search element
+3
+
+
+
+
