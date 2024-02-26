@@ -1,0 +1,11 @@
+echo "Enter two numbers"
+read a
+read b
+echo "Sum of $a and $b is:$(($a+$b))"
+batch:
+cho -e "Enter your name:\nEnter your semester:\nEnter your batch:\nEnter your regno:\n"
+read name
+read sem
+read batch
+read regno
+echo -e "Name:$name\nSemestr:$sem\nBatch:$batch\nRegno:$regno"
